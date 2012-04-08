@@ -1,8 +1,47 @@
 <html>
   <head>
+    <title>Logo</title>
+    <script>
+
+       window.onload = function(){
+           var canvas = document.getElementById("turtle");
+           var context = canvas.getContext("2d");
+           
+           // Move up 
+           context.moveTo(300, 400);
+           context.lineTo(300, 100);
+           context.lineWidth = 5;
+           //context.strokeStyle = "#ff0000"; // line color
+           context.stroke();
+           
+           // Move across
+           context.lineTo(500, 100);
+           context.lineWidth = 5;
+           //context.strokeStyle = "#ff0000"; // line color
+           context.stroke();
+           
+           // move down
+           context.lineTo(500, 400);
+           context.lineWidth = 5;
+           context.stroke();
+           
+           //
+           
+       };
+
+    </script>
   </head>
   <body>
     <canvas id="turtle" width="600" height="800">
     </canvas>
+    <section>
+      <h1>Commands</h1>
+      <ul>
+        <li>FORWARD</li>
+        <li>RIGHT</li>
+        <li>LEFT</li>
+      <ul>
+    </section>
+    <input type="text"></input>
   </body>
 </html>
