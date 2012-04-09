@@ -6,6 +6,14 @@
     %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js", :type => "text/javascript"}
     :javascript
       jQuery(document).ready(function() {
+         
+        jQuery(".console").keypress(function(event) {
+          if ( event.which == 13 ) {
+            console.log("You pressed ENTER")
+            console.log("The command is: " + jQuery(this).val());
+          }
+        });
+           
          var canvas = document.getElementById("turtle");
          var context = canvas.getContext("2d");
        
@@ -40,10 +48,13 @@
       %h1 Commands
       %ul.commands
         %li FORWARD
+        %li BACK
         %li RIGHT
         %li LEFT
+        %li PU - pen up
+        %li PD - pen down
     %section.cli
-      %label{:for => "console"} Please type your commands below:
+      %label{:for => "console"} Please type your command below and press [Enter]:
       %div 
         %span.prompt >
         %input.console{:id => "console", :type => "text"}
