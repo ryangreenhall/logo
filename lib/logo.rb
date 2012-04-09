@@ -1,5 +1,5 @@
 require 'sinatra'
 
 get '/' do
-  "Welcome to Logo"
+  haml :index
 end
