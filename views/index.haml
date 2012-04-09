@@ -35,7 +35,7 @@
       });
       
   %body
-    %canvas{:id => "turtle", :width => 1000, :height => 800}
+    %canvas{:id => "turtle", :width => 1000, :height => 750}
     %section.instructions
       %h1 Commands
       %ul.commands
@@ -44,4 +44,6 @@
         %li LEFT
     %section.cli
       %label{:for => "console"} Please type your commands below:
-      %input.console{:id => "console", :type => "text"}
+      %div 
+        %span.prompt >
+        %input.console{:id => "console", :type => "text"}
