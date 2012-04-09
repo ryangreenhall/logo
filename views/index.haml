@@ -7,50 +7,43 @@
     :javascript
       jQuery(document).ready(function() {
          
+        var canvas = document.getElementById("turtle");
+        var context = canvas.getContext("2d");
+        
+        var drawTurtle = function(context) {
+           context.beginPath();  
+           context.lineWidth = 1;
+           context.moveTo(300,300);  
+           context.lineTo(265,300);
+           context.lineTo(280,275);  
+           context.lineTo(300,300);  
+           context.fillStyle = "orange"; 
+           context.fill();
+           context.strokeStyle ="black";
+           context.stroke();
+        };
+        
+        var moveUp = function(context) {
+           context.moveTo(300, 300);
+           context.lineTo(300, 100);
+           context.lineWidth = 3;
+           //context.strokeStyle = "#ff0000"; // line color
+           context.stroke();
+        }; 
+         
+         
         jQuery(".console").keypress(function(event) {
           if ( event.which == 13 ) {
             var command = jQuery(this).val();
             console.log("The command is: " + command);
             jQuery(this).val("");
+            moveUp(context);
           }
         });
-           
-         var canvas = document.getElementById("turtle");
-         var context = canvas.getContext("2d");
-       
-         // Move up 
-         context.moveTo(300, 400);
-         context.lineTo(300, 100);
-         context.lineWidth = 5;
-         //context.strokeStyle = "#ff0000"; // line color
-         context.stroke();
-       
-         // Move across
-         context.lineTo(500, 100);
-         context.lineWidth = 5;
-         //context.strokeStyle = "#ff0000"; // line color
-         context.stroke();
-       
-         // move down
-         context.lineTo(500, 400);
-         context.lineWidth = 5;
-         context.stroke();
-        
-         // move across left
-         context.lineTo(300, 400);
-         context.lineWidth = 5;
-         context.stroke();
          
-         context.beginPath();  
-         context.lineWidth = 1;
-         context.moveTo(50,50);  
-         context.lineTo(80,50);
-         context.lineTo(65,25);  
-         context.lineTo(50,51);  
-         context.fillStyle = "orange"; 
-         context.fill();
-         context.strokeStyle ="black";
-         context.stroke();
+        console.log("Drawing the turtle");
+         
+        drawTurtle(context);
          
       });
       
