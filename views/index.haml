@@ -5,7 +5,7 @@
     %link{:href => to("/stylesheets/app.css"), :media => "screen", :rel => "stylesheet", :type => "text/css"}
     %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js", :type => "text/javascript"}
     :javascript
-      window.onload = function(){
+      jQuery(document).ready(function() {
          var canvas = document.getElementById("turtle");
          var context = canvas.getContext("2d");
        
@@ -32,7 +32,7 @@
          context.lineWidth = 5;
          context.stroke();
          
-      };
+      });
       
   %body
     %canvas{:id => "turtle", :width => 600, :height => 800}
