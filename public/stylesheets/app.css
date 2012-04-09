@@ -5,3 +5,8 @@
 .cli {
   clear: both;
 }
+
+input.console {
+  width: 99%;
+  font-size: 1.5em;
+}
