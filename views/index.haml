@@ -6,14 +6,18 @@
     %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js", :type => "text/javascript"}
     :javascript
       jQuery(document).ready(function() {
-         
-        var canvas = document.getElementById("turtle");
-        var context = canvas.getContext("2d");
+        
+        var context = function() {
+          return document.getElementById("turtle").getContext("2d");
+        };
         
         var drawTurtle = function(context) {
+           console.log("Drawing the turtle");
            context.beginPath();  
            context.lineWidth = 1;
            context.moveTo(300,300);  
+           
+           
            context.lineTo(265,300);
            context.lineTo(280,275);  
            context.lineTo(300,300);  
@@ -37,13 +41,12 @@
             var command = jQuery(this).val();
             console.log("The command is: " + command);
             jQuery(this).val("");
-            moveUp(context);
+            moveUp(context());
           }
         });
+        
          
-        console.log("Drawing the turtle");
-         
-        drawTurtle(context);
+        drawTurtle(context());
          
       });
       
