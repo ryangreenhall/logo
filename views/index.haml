@@ -15,11 +15,13 @@
            console.log("Drawing the turtle");
            context.beginPath();  
            context.lineWidth = 1;
+           
            context.moveTo(300,300);  
-           
-           
-           context.lineTo(265,300);
-           context.lineTo(280,275);  
+            
+           var turtleHeight = 50;
+          
+           context.lineTo((300 - (turtleHeight/2)), (300 + (turtleHeight/2)));
+           context.lineTo((300 + (turtleHeight/2)),(300 + (turtleHeight/2)));  
            context.lineTo(300,300);  
            context.fillStyle = "orange"; 
            context.fill();
