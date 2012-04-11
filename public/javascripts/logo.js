@@ -2,6 +2,8 @@ var logo = {}
 
 logo.turtle = function(position) {
   var that = {};
+  var path = [position.x, position.y];
+
   var position = position;
   
   // maintain a collection of points that the turtle has been.
@@ -10,6 +12,7 @@ logo.turtle = function(position) {
     console.log("Moving forward " + units + " units");
     // Heading North -> dec y by units
     position.y = position.y - units;
+    path.push(position);
   };
   
   that.asString = function() {
@@ -17,20 +20,36 @@ logo.turtle = function(position) {
   };
   
   that.draw = function(context) {
-    context.beginPath();  
-    context.lineWidth = 1;
     
-    var turtleHeight = 50;
-    
-    context.moveTo(position.x,position.y);  
-    context.lineTo((position.x - (turtleHeight/2)), (position.y + (turtleHeight/2)));
-    context.lineTo((position.x + (turtleHeight/2)), (position.y + (turtleHeight/2)));  
-    context.lineTo(position.x, position.y);  
-    context.fillStyle = "orange"; 
+    var drawTurtle = function() {
+      context.beginPath();  
+      context.lineWidth = 1;
 
-    context.fill();
-    context.strokeStyle ="black";
-    context.stroke();
+      var turtleHeight = 50;
+
+      context.moveTo(position.x,position.y);  
+      context.lineTo((position.x - (turtleHeight/2)), (position.y + (turtleHeight/2)));
+      context.lineTo((position.x + (turtleHeight/2)), (position.y + (turtleHeight/2)));  
+      context.lineTo(position.x, position.y);  
+      context.fillStyle = "orange"; 
+
+      context.fill();
+      context.strokeStyle ="black";
+      context.stroke();
+    }
+    
+    // Only attempt to draw the path if we have been to row
+    if (path.length > 2) {
+      context.beginPath(); 
+      // draw the path
+      context.moveTo(300, 300);
+      context.lineTo(300, 200);
+      context.lineWidth = 3;
+      //context.strokeStyle = "#ff0000"; // line color
+      context.stroke();
+    }
+    
+    drawTurtle();
   };
   return that;
 }

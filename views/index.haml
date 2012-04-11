@@ -23,12 +23,6 @@
            
            console.log("After move forward");
            console.log(turtle.asString());
-           
-           context.moveTo(300, 300);
-           context.lineTo(300, 100);
-           context.lineWidth = 3;
-           //context.strokeStyle = "#ff0000"; // line color
-           context.stroke();
         }; 
          
          
@@ -38,6 +32,9 @@
             console.log("The command is: " + command);
             jQuery(this).val("");
             moveUp(context());
+            
+            context().clearRect(0, 0, 1000, 750);
+            turtle.draw(context());
           }
         });
         
