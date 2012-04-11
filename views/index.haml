@@ -3,7 +3,9 @@
   %head
     %title Logo
     %link{:href => to("/stylesheets/app.css"), :media => "screen", :rel => "stylesheet", :type => "text/css"}
-    %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js", :type => "text/javascript"}
+
+    %script{:src => to("/javascripts/jquery.js"), :type => "text/javascript"}
+    %script{:src => to("/javascripts/logo.js"), :type => "text/javascript"}
     :javascript
       jQuery(document).ready(function() {
         
@@ -11,25 +13,17 @@
           return document.getElementById("turtle").getContext("2d");
         };
         
-        var drawTurtle = function(context) {
-           console.log("Drawing the turtle");
-           context.beginPath();  
-           context.lineWidth = 1;
-           
-           context.moveTo(300,300);  
-            
-           var turtleHeight = 50;
-          
-           context.lineTo((300 - (turtleHeight/2)), (300 + (turtleHeight/2)));
-           context.lineTo((300 + (turtleHeight/2)),(300 + (turtleHeight/2)));  
-           context.lineTo(300,300);  
-           context.fillStyle = "orange"; 
-           context.fill();
-           context.strokeStyle ="black";
-           context.stroke();
-        };
+        var turtle = logo.turtle({x: 300, y: 300});
+        turtle.draw(context());
+        
         
         var moveUp = function(context) {
+        
+           turtle.moveForward(100);
+           
+           console.log("After move forward");
+           console.log(turtle.asString());
+           
            context.moveTo(300, 300);
            context.lineTo(300, 100);
            context.lineWidth = 3;
@@ -47,8 +41,8 @@
           }
         });
         
-         
-        drawTurtle(context());
+        
+        
          
       });
       
