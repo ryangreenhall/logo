@@ -52,6 +52,10 @@
               console.log(turtle.asString());
             }
             
+            if (command.match(/^PD/)) {
+              turtle.penDown();
+            }
+            
             if (command.match(/^CS/)) {
               clearScreen();
               turtle = createTurtle();
