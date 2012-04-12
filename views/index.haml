@@ -61,6 +61,13 @@
               turtle.penWidth(units);
             }
             
+            if (command.match(/^RIGHT/)) {
+              units = parseInt(jQuery.trim(command.substring("RIGHT".length, command.length)));
+              turtle.rotateRight();
+              console.log(turtle.asString());
+              redraw();
+            }
+            
             
             if (command.match(/^CS/)) {
               clearScreen();

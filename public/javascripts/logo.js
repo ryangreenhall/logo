@@ -8,6 +8,12 @@ logo.turtle = function(position) {
   
   var pen = "down"
   var penWidth = 3;
+  var heading = "North";
+  
+  var rightRotations = {"North" : "East",
+                        "East"  : "South",
+                        "South" : "West", 
+                        "West"  : "North"};
   
   that.moveForward = function(units) {
     console.log("Moving forward " + units + " units");
@@ -20,6 +26,11 @@ logo.turtle = function(position) {
     console.log("Moving back " + units + " units");
     position.y = position.y + units;
     path.push({x: position.x, y: position.y, pen: pen, penWidth: penWidth});
+  };
+  
+  that.rotateRight = function() {
+    heading = rightRotations[heading];
+    console.log("rotating right");
   };
   
   that.penUp = function () {
@@ -35,7 +46,7 @@ logo.turtle = function(position) {
   };
   
   that.asString = function() {
-    return "posititon: " + position + "Paths: " + path.length + " Pen: " + pen;
+    return "posititon: " + position + "Paths: " + path.length + " Pen: " + pen + " Heading: " + heading;
   };
   
   that.draw = function(context) {
@@ -47,8 +58,30 @@ logo.turtle = function(position) {
       var turtleHeight = 50;
 
       context.moveTo(position.x,position.y);  
-      context.lineTo((position.x - (turtleHeight/2)), (position.y + (turtleHeight/2)));
-      context.lineTo((position.x + (turtleHeight/2)), (position.y + (turtleHeight/2)));  
+      
+      // North
+      
+      if (heading === "North") {
+        context.lineTo((position.x - (turtleHeight/2)), (position.y + (turtleHeight/2)));
+        context.lineTo((position.x + (turtleHeight/2)), (position.y + (turtleHeight/2)));
+      }
+      
+      if (heading === "South") {
+        // SOUTH
+        context.lineTo((position.x + (turtleHeight/2)), (position.y - (turtleHeight/2)));
+        context.lineTo((position.x - (turtleHeight/2)), (position.y - (turtleHeight/2)));
+      }
+      
+      if (heading === "West") {
+        context.lineTo((position.y + (turtleHeight/2)), (position.x - (turtleHeight/2)));
+        context.lineTo((position.y + (turtleHeight/2)), (position.x + (turtleHeight/2)));
+      }
+  
+      if (heading === "East") {
+        context.lineTo((position.y - (turtleHeight/2)), (position.x + (turtleHeight/2)));
+        context.lineTo((position.y - (turtleHeight/2)), (position.x - (turtleHeight/2)));
+      }
+          
       context.lineTo(position.x, position.y);  
       context.fillStyle = "orange"; 
 
