@@ -94,11 +94,11 @@
          
         jQuery(".console").keypress(function(event) {
           if ( event.which == 13 ) {
-            var command = jQuery(this).val();
+            var command = jQuery.trim(jQuery(this).val());
             var commands = command.split(";");
             
             for(var i in commands) {
-              processCommand(commands[i]);
+              processCommand(jQuery.trim(commands[i]));
             }
             
             jQuery(this).val("");
