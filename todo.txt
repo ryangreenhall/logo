@@ -1,6 +1,4 @@
-1) Simple forward command parsing.
-
-2) Backwards
+1) Parse out the units from the command.
 
 2) Pen up
 

@@ -15,16 +15,6 @@
         
         var turtle = logo.turtle({x: 300, y: 300});
         turtle.draw(context());
-        
-        
-        var moveUp = function(context) {
-        
-           turtle.moveForward(100);
-           
-           console.log("After move forward");
-           console.log(turtle.asString());
-        }; 
-         
          
         jQuery(".console").keypress(function(event) {
           if ( event.which == 13 ) {
@@ -32,7 +22,7 @@
             
             if (command.match(/^FORWARD/)) {
               console.log("Got the forward command")
-              moveUp(context());
+              turtle.moveForward(100);
             }
             
             if (command.match(/^BACK/)) {
