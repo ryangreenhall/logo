@@ -46,11 +46,16 @@ logo.turtle = function(position) {
       console.log("Starting x:" + startPos.x);
       console.log("Starting y:" + startPos.y);
       
+      // set the starting point
       context.beginPath(); 
-      // draw the path
       context.moveTo(startPos.x, startPos.y);
-      context.lineTo(300, 200);
-      context.lineWidth = 3;
+      
+      for (var i in path) {
+        context.lineWidth = 3;
+        var nextPath = path[i];
+        context.lineTo(nextPath.x, nextPath.y);
+      }
+      
       //context.strokeStyle = "#ff0000"; // line color
       context.stroke();
     }
