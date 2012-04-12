@@ -12,11 +12,11 @@ logo.turtle = function(position) {
     console.log("Moving forward " + units + " units");
     // Heading North -> dec y by units
     position.y = position.y - units;
-    path.push(position);
+    path.push({x: position.x, y: position.y});
   };
   
   that.asString = function() {
-    return position;
+    return "posititon: " + position + "Paths: " + path.length;
   };
   
   that.draw = function(context) {
@@ -41,10 +41,7 @@ logo.turtle = function(position) {
     // Only attempt to draw the path if we have been to row
     if (path.length > 1) {
       
-      var startPos = path.shift();
-      console.log("Starting pos:" + startPos);
-      console.log("Starting x:" + startPos.x);
-      console.log("Starting y:" + startPos.y);
+      var startPos = path[0];
       
       // set the starting point
       context.beginPath(); 
