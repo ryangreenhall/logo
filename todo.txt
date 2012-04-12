@@ -1,7 +1,18 @@
-- Handle moving forward along different headings;
-
 - Fix bug when rotating after moving.
 
 - Style the instructions
 
 - Style the console
+
+- Allow multiple commands - e.g:
+
+FORWARD 100;BACK 200;
+
+- Click instruction for it to appear in the console;
+
+- Add a turtle status panel: 
+
+Position:
+Pen state:
+Heading:
+

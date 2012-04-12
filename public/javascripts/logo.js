@@ -19,6 +19,18 @@ logo.turtle = function(position) {
                        "West"  : "South",
                        "South" : "East",
                        "East"  : "North"};
+                       
+  that.pos = function() {
+    return position;
+  };
+  
+  that.heading = function() {
+    return heading;
+  };
+  
+  that.pen = function() {
+    return pen;
+  };
   
   that.moveForward = function(units) {
     

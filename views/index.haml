@@ -24,10 +24,19 @@
         var redraw = function() {
           context().clearRect(0, 0, 1000, 750);
           turtle.draw(context());
+          drawTurtleStatus();
+        };
+        
+        var drawTurtleStatus = function() {
+          jQuery(".position").text(turtle.pos().x + "," + turtle.pos().y);
+          jQuery(".pen").text(turtle.pen());
+          jQuery(".heading").text(turtle.heading());
         };
         
         var turtle = createTurtle();
         turtle.draw(context());
+        
+        drawTurtleStatus();
          
         jQuery(".console").keypress(function(event) {
           if ( event.which == 13 ) {
@@ -50,10 +59,12 @@
               console.log("Pulling the pen up");
               turtle.penUp();
               console.log(turtle.asString());
+              redraw();
             }
             
             if (command.match(/^PD/)) {
               turtle.penDown();
+              redraw();
             }
             
             if (command.match(/^PENWIDTH/)) {
@@ -74,7 +85,6 @@
               console.log(turtle.asString());
               redraw();
             }
-            
             
             if (command.match(/^CS/)) {
               clearScreen();
@@ -99,8 +109,23 @@
         %li PU - pen up
         %li PD - pen down
         %li CS - Clear screen
+      %ul
+        %li
+          %span.property Pos:
+          %span.position 
+        %li
+          %span.property Pen:
+          %span.pen 
+        %li
+          %span.property Heading:
+          %span.heading
+    
     %section.cli
       %label{:for => "console"} Please type your command below and press [Enter]:
       %div 
         %span.prompt >
         %input.console{:id => "console", :type => "text"}
+     
+        
+          
+          
