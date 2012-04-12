@@ -21,8 +21,8 @@
             var command = jQuery(this).val();
             
             if (command.match(/^FORWARD/)) {
-              console.log("Got the forward command")
-              turtle.moveForward(100);
+              units = jQuery.trim(command.substring("FORWARD".length, command.length));
+              turtle.moveForward(units);
             }
             
             if (command.match(/^BACK/)) {
