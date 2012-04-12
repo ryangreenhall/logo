@@ -97,9 +97,29 @@
             var command = jQuery.trim(jQuery(this).val());
             var commands = command.split(";");
             
-            for(var i in commands) {
-              processCommand(jQuery.trim(commands[i]));
+            if (command.match(/^REPEAT/)) {
+              console.log("Repeat command");
+              
+              commands = command.match(/\[.*]/)[0].replace("[", "").replace("]", "").split(";");
+              console.log(commands);
+              
+              // parse the number of times to repeat.
+              var timesToRepeat = command.match(/\d\s/);
+              
+              while (timesToRepeat > 0) {
+                for(var i in commands) {
+                  processCommand(jQuery.trim(commands[i]));
+                }
+                timesToRepeat--;
+              }
+              
+            } else {
+              for(var i in commands) {
+                processCommand(jQuery.trim(commands[i]));
+              }
             }
+            
+            
             
             jQuery(this).val("");
           }
