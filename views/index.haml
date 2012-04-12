@@ -39,61 +39,68 @@
         turtle.draw(context());
         
         drawTurtleStatus();
+        
+        var processCommand = function(command) {
+          if (command.match(/^FORWARD/)) {
+            units = parseInt(jQuery.trim(command.substring("FORWARD".length, command.length)));
+            turtle.moveForward(units);
+            redraw();
+          }
+          
+          if (command.match(/^BACK/)) {
+            units = parseInt(jQuery.trim(command.substring("BACK".length, command.length)));
+            console.log("Moving back unit: " + units);
+            turtle.moveBack(units);
+            redraw();
+          }
+          
+          if (command.match(/^PU/)) {
+            console.log("Pulling the pen up");
+            turtle.penUp();
+            console.log(turtle.asString());
+            redraw();
+          }
+          
+          if (command.match(/^PD/)) {
+            turtle.penDown();
+            redraw();
+          }
+          
+          if (command.match(/^PENWIDTH/)) {
+            units = parseInt(jQuery.trim(command.substring("PENWIDTH".length, command.length)));
+            turtle.penWidth(units);
+          }
+          
+          if (command.match(/^RIGHT/)) {
+            units = parseInt(jQuery.trim(command.substring("RIGHT".length, command.length)));
+            turtle.rotateRight();
+            console.log(turtle.asString());
+            redraw();
+          }
+          
+          if (command.match(/^LEFT/)) {
+            units = parseInt(jQuery.trim(command.substring("LEFT".length, command.length)));
+            turtle.rotateLeft();
+            console.log(turtle.asString());
+            redraw();
+          }
+          
+          if (command.match(/^CS/)) {
+            clearScreen();
+            turtle = createTurtle();
+            turtle.draw(context());
+          }
+        };
          
         jQuery(".console").keypress(function(event) {
           if ( event.which == 13 ) {
             var command = jQuery(this).val();
+            var commands = command.split(";");
             
-            if (command.match(/^FORWARD/)) {
-              units = parseInt(jQuery.trim(command.substring("FORWARD".length, command.length)));
-              turtle.moveForward(units);
-              redraw();
+            for(var i in commands) {
+              processCommand(commands[i]);
             }
             
-            if (command.match(/^BACK/)) {
-              units = parseInt(jQuery.trim(command.substring("BACK".length, command.length)));
-              console.log("Moving back unit: " + units);
-              turtle.moveBack(units);
-              redraw();
-            }
-            
-            if (command.match(/^PU/)) {
-              console.log("Pulling the pen up");
-              turtle.penUp();
-              console.log(turtle.asString());
-              redraw();
-            }
-            
-            if (command.match(/^PD/)) {
-              turtle.penDown();
-              redraw();
-            }
-            
-            if (command.match(/^PENWIDTH/)) {
-              units = parseInt(jQuery.trim(command.substring("PENWIDTH".length, command.length)));
-              turtle.penWidth(units);
-            }
-            
-            if (command.match(/^RIGHT/)) {
-              units = parseInt(jQuery.trim(command.substring("RIGHT".length, command.length)));
-              turtle.rotateRight();
-              console.log(turtle.asString());
-              redraw();
-            }
-            
-            if (command.match(/^LEFT/)) {
-              units = parseInt(jQuery.trim(command.substring("LEFT".length, command.length)));
-              turtle.rotateLeft();
-              console.log(turtle.asString());
-              redraw();
-            }
-            
-            if (command.match(/^CS/)) {
-              clearScreen();
-              turtle = createTurtle();
-              turtle.draw(context());
-            }
-            console.log("The command is: " + command);
             jQuery(this).val("");
           }
         });
