@@ -34,6 +34,10 @@
               console.log("Got the forward command")
               moveUp(context());
             }
+            
+            if (command.match(/^BACK/)) {
+              turtle.moveBack(100);
+            }
             console.log("The command is: " + command);
             jQuery(this).val("");
             
