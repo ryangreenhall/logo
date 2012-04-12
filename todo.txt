@@ -1,6 +1,6 @@
-Draw the paths.
-
 1) Simple forward command parsing.
+
+2) Backwards
 
 2) Pen up
 
