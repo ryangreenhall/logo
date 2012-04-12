@@ -1,4 +1,10 @@
-1) Represent current position of the turtle
+Draw the paths.
+
+1) Simple forward command parsing.
+
+2) Pen up
+
+3) 
 
 2) Represent the current heading of the turtle
 

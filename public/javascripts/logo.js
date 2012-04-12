@@ -2,7 +2,7 @@ var logo = {}
 
 logo.turtle = function(position) {
   var that = {};
-  var path = [position.x, position.y];
+  var path = [{x: position.x, y: position.y}];
 
   var position = position;
   
@@ -39,10 +39,16 @@ logo.turtle = function(position) {
     }
     
     // Only attempt to draw the path if we have been to row
-    if (path.length > 2) {
+    if (path.length > 1) {
+      
+      var startPos = path.shift();
+      console.log("Starting pos:" + startPos);
+      console.log("Starting x:" + startPos.x);
+      console.log("Starting y:" + startPos.y);
+      
       context.beginPath(); 
       // draw the path
-      context.moveTo(300, 300);
+      context.moveTo(startPos.x, startPos.y);
       context.lineTo(300, 200);
       context.lineWidth = 3;
       //context.strokeStyle = "#ff0000"; // line color
