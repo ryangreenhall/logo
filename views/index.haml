@@ -13,7 +13,20 @@
           return document.getElementById("turtle").getContext("2d");
         };
         
-        var turtle = logo.turtle({x: 300, y: 300});
+        var clearScreen = function() {
+          context().clearRect(0, 0, 1000, 750);
+        };
+        
+        var createTurtle = function() {
+          return logo.turtle({x: 300, y: 300});
+        };
+        
+        var redraw = function() {
+          context().clearRect(0, 0, 1000, 750);
+          turtle.draw(context());
+        };
+        
+        var turtle = createTurtle();
         turtle.draw(context());
          
         jQuery(".console").keypress(function(event) {
@@ -23,18 +36,23 @@
             if (command.match(/^FORWARD/)) {
               units = jQuery.trim(command.substring("FORWARD".length, command.length));
               turtle.moveForward(units);
+              redraw();
             }
             
             if (command.match(/^BACK/)) {
               units = jQuery.trim(command.substring("BACK".length, command.length));
               console.log("Moving back unit: " + units);
               turtle.moveBack(100);
+              redraw();
+            }
+            
+            if (command.match(/^CS/)) {
+              clearScreen();
+              turtle = createTurtle();
+              turtle.draw(context());
             }
             console.log("The command is: " + command);
             jQuery(this).val("");
-            
-            context().clearRect(0, 0, 1000, 750);
-            turtle.draw(context());
           }
         });
       });
@@ -50,6 +68,7 @@
         %li LEFT
         %li PU - pen up
         %li PD - pen down
+        %li CS - Clear screen
     %section.cli
       %label{:for => "console"} Please type your command below and press [Enter]:
       %div 

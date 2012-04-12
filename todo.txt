@@ -1,4 +1,4 @@
-1) Parse out the units from the command.
+- Clear the screen
 
 2) Pen up
 
