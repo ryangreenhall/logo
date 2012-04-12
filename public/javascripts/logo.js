@@ -105,7 +105,15 @@ logo.turtle = function(position) {
 
       context.moveTo(position.x,position.y);  
       
+      // Points of traingle relative to starting position heading north
+      x1 = (position.x - (turtleHeight/2));
+      y1 = (position.y + (turtleHeight/2));
+        
+      x2 = (position.x + (turtleHeight/2));
+      y2 = (position.y + (turtleHeight/2));
+        
       // North
+      
       
       if (heading === "North") {
         context.lineTo((position.x - (turtleHeight/2)), (position.y + (turtleHeight/2)));
@@ -124,8 +132,12 @@ logo.turtle = function(position) {
       }
   
       if (heading === "East") {
-        context.lineTo((position.y - (turtleHeight/2)), (position.x + (turtleHeight/2)));
-        context.lineTo((position.y - (turtleHeight/2)), (position.x - (turtleHeight/2)));
+        
+        newPoint1 = maths.rotate({x: x1, y: y1}, {x: position.x, y: position.y}, -90);
+        context.lineTo(newPoint1.x, newPoint1.y);
+        
+        newPoint2 = maths.rotate({x: x2, y: y2}, {x: position.x, y: position.y}, -90);
+        context.lineTo(newPoint2.x, newPoint2.y);
       }
           
       context.lineTo(position.x, position.y);  
