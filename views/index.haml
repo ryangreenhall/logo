@@ -29,9 +29,13 @@
         jQuery(".console").keypress(function(event) {
           if ( event.which == 13 ) {
             var command = jQuery(this).val();
+            
+            if (command.match(/^FORWARD/)) {
+              console.log("Got the forward command")
+              moveUp(context());
+            }
             console.log("The command is: " + command);
             jQuery(this).val("");
-            moveUp(context());
             
             context().clearRect(0, 0, 1000, 750);
             turtle.draw(context());
