@@ -127,13 +127,16 @@ logo.turtle = function(position) {
       }
       
       if (heading === "West") {
-        context.lineTo((position.y + (turtleHeight/2)), (position.x - (turtleHeight/2)));
-        context.lineTo((position.y + (turtleHeight/2)), (position.x + (turtleHeight/2)));
+        newPoint1 = maths.rotate({x: x1, y: y1}, {x: position.x, y: position.y}, 90);
+        context.lineTo(newPoint1.x, newPoint1.y);
+
+        newPoint2 = maths.rotate({x: x2, y: y2}, {x: position.x, y: position.y}, 89);
+        context.lineTo(newPoint2.x, newPoint2.y);
       }
   
       if (heading === "East") {
         
-        newPoint1 = maths.rotate({x: x1, y: y1}, {x: position.x, y: position.y}, -90);
+        newPoint1 = maths.rotate({x: x1, y: y1}, {x: position.x, y: position.y}, -89);
         context.lineTo(newPoint1.x, newPoint1.y);
         
         newPoint2 = maths.rotate({x: x2, y: y2}, {x: position.x, y: position.y}, -90);
