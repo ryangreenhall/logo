@@ -41,8 +41,21 @@ logo.turtle = function(position) {
   };
   
   that.moveBack = function(units) {
-
-    position.y = position.y + units;
+    
+    switch(heading) {
+      case "North":
+        position.y = position.y + units;
+        break;
+      case "East":
+        position.x = position.x - units;
+        break;
+      case "South":
+        position.y = position.y - units;
+        break;
+      case "West":
+        position.x = position.x + units;
+        break;
+    }
     path.push({x: position.x, y: position.y, pen: pen, penWidth: penWidth});
   };
   
