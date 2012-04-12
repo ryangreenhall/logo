@@ -1,4 +1,3 @@
-- Fix bug when rotating after moving. Need to do a proper rotation.
 
 - Style the instructions
 
@@ -9,5 +8,7 @@
 FORWARD 100;BACK 200;
 
 - Click instruction for it to appear in the console;
+
+Animation!
 
 
