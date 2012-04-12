@@ -1,6 +1,6 @@
-- Rotate left
-
 - Handle moving forward along different headings;
+
+- Fix bug when rotating after moving.
 
 - Style the instructions
 
