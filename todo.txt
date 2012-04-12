@@ -1,11 +1,7 @@
-2) Pen up
+- Represent the current heading of the turtle
 
-3) 
+- Rotate Right (90 degrees by default)
 
-2) Represent the current heading of the turtle
+- Style the instructions
 
-3) Handle command input
-
-4) Style the instructions
-
-5) Style the console
+- Style the console

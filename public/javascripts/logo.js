@@ -7,18 +7,19 @@ logo.turtle = function(position) {
   var position = position;
   
   var pen = "down"
+  var penWidth = 3;
   
   that.moveForward = function(units) {
     console.log("Moving forward " + units + " units");
     // Heading North -> dec y by units
     position.y = position.y - units;
-    path.push({x: position.x, y: position.y, pen: pen});
+    path.push({x: position.x, y: position.y, pen: pen, penWidth: penWidth});
   };
   
   that.moveBack = function(units) {
     console.log("Moving back " + units + " units");
     position.y = position.y + units;
-    path.push({x: position.x, y: position.y, pen: pen});
+    path.push({x: position.x, y: position.y, pen: pen, penWidth: penWidth});
   };
   
   that.penUp = function () {
@@ -27,6 +28,10 @@ logo.turtle = function(position) {
   
   that.penDown = function() {
     pen = "down";
+  };
+  
+  that.penWidth = function(width) {
+    penWidth = width;
   };
   
   that.asString = function() {
@@ -60,8 +65,8 @@ logo.turtle = function(position) {
       context.moveTo(startPos.x, startPos.y);
       
       for (var i in path) {
-        context.lineWidth = 3;
         var nextPath = path[i];
+        context.lineWidth = nextPath.penWidth;
         
         if (nextPath.pen === "down") {
           context.lineTo(nextPath.x, nextPath.y);
@@ -69,8 +74,8 @@ logo.turtle = function(position) {
         if (nextPath.pen === "up") {
           context.moveTo(nextPath.x, nextPath.y);
         }
+        
       }
-      
       //context.strokeStyle = "#ff0000"; // line color
       context.stroke();
     }

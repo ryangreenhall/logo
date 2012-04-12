@@ -56,6 +56,12 @@
               turtle.penDown();
             }
             
+            if (command.match(/^PENWIDTH/)) {
+              units = parseInt(jQuery.trim(command.substring("PENWIDTH".length, command.length)));
+              turtle.penWidth(units);
+            }
+            
+            
             if (command.match(/^CS/)) {
               clearScreen();
               turtle = createTurtle();
