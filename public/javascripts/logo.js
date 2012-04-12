@@ -22,8 +22,22 @@ logo.turtle = function(position) {
   
   that.moveForward = function(units) {
     console.log("Moving forward " + units + " units");
-    // Heading North -> dec y by units
-    position.y = position.y - units;
+    
+    switch(heading) {
+      case "North":
+        position.y = position.y - units;
+        break;
+      case "East":
+        position.x = position.x + units;
+        break;
+      case "South":
+        position.y = position.y + units;
+        break;
+      case "West":
+        position.x = position.x - units;
+        break;
+    };
+    
     path.push({x: position.x, y: position.y, pen: pen, penWidth: penWidth});
   };
   
@@ -54,7 +68,7 @@ logo.turtle = function(position) {
   };
   
   that.asString = function() {
-    return "posititon: " + position + "Paths: " + path.length + " Pen: " + pen + " Heading: " + heading;
+    return "posititon: " + position.x + "," + position.y + " Paths: " + path.length + " Pen: " + pen + " Heading: " + heading;
   };
   
   that.draw = function(context) {
