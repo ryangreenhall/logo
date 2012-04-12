@@ -16,7 +16,7 @@ logo.turtle = function(position) {
   };
   
   that.moveBack = function(units) {
-    console.log("Moving forward " + units + " units");
+    console.log("Moving back " + units + " units");
     position.y = position.y + units;
     path.push({x: position.x, y: position.y});
   };

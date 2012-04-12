@@ -26,6 +26,8 @@
             }
             
             if (command.match(/^BACK/)) {
+              units = jQuery.trim(command.substring("BACK".length, command.length));
+              console.log("Moving back unit: " + units);
               turtle.moveBack(100);
             }
             console.log("The command is: " + command);
