@@ -6,13 +6,15 @@ logo.turtle = function(position) {
 
   var position = position;
   
+  var pen = "down"
+  
   // maintain a collection of points that the turtle has been.
   
   that.moveForward = function(units) {
     console.log("Moving forward " + units + " units");
     // Heading North -> dec y by units
     position.y = position.y - units;
-    path.push({x: position.x, y: position.y});
+    path.push({x: position.x, y: position.y, pen: pen});
   };
   
   that.moveBack = function(units) {
@@ -21,8 +23,16 @@ logo.turtle = function(position) {
     path.push({x: position.x, y: position.y});
   };
   
+  that.penUp = function () {
+    pen = "up";
+  };
+  
+  that.penDown = function() {
+    pen = "down";
+  };
+  
   that.asString = function() {
-    return "posititon: " + position + "Paths: " + path.length;
+    return "posititon: " + position + "Paths: " + path.length + " Pen: " + pen;
   };
   
   that.draw = function(context) {

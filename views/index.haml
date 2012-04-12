@@ -34,7 +34,7 @@
             var command = jQuery(this).val();
             
             if (command.match(/^FORWARD/)) {
-              units = jQuery.trim(command.substring("FORWARD".length, command.length));
+              units = parseInt(jQuery.trim(command.substring("FORWARD".length, command.length)));
               turtle.moveForward(units);
               redraw();
             }
@@ -44,6 +44,12 @@
               console.log("Moving back unit: " + units);
               turtle.moveBack(units);
               redraw();
+            }
+            
+            if (command.match(/^PU/)) {
+              console.log("Pulling the pen up");
+              turtle.penUp();
+              console.log(turtle.asString());
             }
             
             if (command.match(/^CS/)) {
