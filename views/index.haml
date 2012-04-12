@@ -40,9 +40,9 @@
             }
             
             if (command.match(/^BACK/)) {
-              units = jQuery.trim(command.substring("BACK".length, command.length));
+              units = parseInt(jQuery.trim(command.substring("BACK".length, command.length)));
               console.log("Moving back unit: " + units);
-              turtle.moveBack(100);
+              turtle.moveBack(units);
               redraw();
             }
             
