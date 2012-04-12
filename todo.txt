@@ -1,6 +1,6 @@
-- Represent the current heading of the turtle
+- Rotate left
 
-- Rotate Right (90 degrees by default)
+- Handle moving forward along different headings;
 
 - Style the instructions
 
