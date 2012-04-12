@@ -14,6 +14,11 @@ logo.turtle = function(position) {
                         "East"  : "South",
                         "South" : "West", 
                         "West"  : "North"};
+                        
+  var leftRotations = {"North" : "West",
+                       "West"  : "South",
+                       "South" : "East",
+                       "East"  : "North"};
   
   that.moveForward = function(units) {
     console.log("Moving forward " + units + " units");
@@ -30,7 +35,10 @@ logo.turtle = function(position) {
   
   that.rotateRight = function() {
     heading = rightRotations[heading];
-    console.log("rotating right");
+  };
+  
+  that.rotateLeft = function() {
+    heading = leftRotations[heading];
   };
   
   that.penUp = function () {

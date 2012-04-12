@@ -68,6 +68,13 @@
               redraw();
             }
             
+            if (command.match(/^LEFT/)) {
+              units = parseInt(jQuery.trim(command.substring("LEFT".length, command.length)));
+              turtle.rotateLeft();
+              console.log(turtle.asString());
+              redraw();
+            }
+            
             
             if (command.match(/^CS/)) {
               clearScreen();
