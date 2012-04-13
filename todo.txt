@@ -7,8 +7,6 @@
 
 - Click instruction for it to appear in the console;
 
-Animation!
-
 Pass commands on the url so you can send pictures to people.
 
 REPEAT 4 [FORWARD 200; RIGHT]
